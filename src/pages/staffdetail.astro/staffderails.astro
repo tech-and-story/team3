@@ -1,0 +1,30 @@
+<!-- ---
+export async function getStaticPaths() {
+    const apiurl = "https://ytvapyezsyjphhrmwfsk.supabase.co/rest/v1/";
+const staffTableName = "staff";
+
+const key = "sb_publishable_nUGu7E0X6O-02X9AXpXoJA_qtbHWKwE";
+const options = {
+	headers: {
+		apikey: key
+	},
+};
+
+const staffResponse = await fetch(apiurl + staffTableName, options);
+const staffData = await staffResponse.json();
+console.log("staffData", staffData);
+
+
+  return staffData.map((staff) => {
+    return {
+      params: { id: staff.id },
+      props: { staff },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+---
+
+<h1>{id}: {staff.name}</h1> -->

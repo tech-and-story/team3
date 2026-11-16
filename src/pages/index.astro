@@ -1,0 +1,47 @@
+---
+import StaffCard from "../components/StaffCard.astro";
+const apiurl = "https://ytvapyezsyjphhrmwfsk.supabase.co/rest/v1/";
+const staffTableName = "staff";
+const studioTableName = "studios";
+const udstyrTableName = "udstyr";
+
+const key = "sb_publishable_nUGu7E0X6O-02X9AXpXoJA_qtbHWKwE";
+const options = {
+	headers: {
+		apikey: key
+	},
+};
+
+const staffResponse = await fetch(apiurl + staffTableName, options);
+const staffData = await staffResponse.json();
+console.log("staffData", staffData);
+
+const studioResponse = await fetch(apiurl + studioTableName, options);
+const studioData = await studioResponse.json();
+
+// console.log("studioData", studioData);
+
+const udstyrResponse = await fetch(apiurl + udstyrTableName, options);
+const udstyrData = await udstyrResponse.json();
+// console.log("udstyrData", udstyrData);
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+		{
+			staffData.map((data) => {
+				return <StaffCard data={data}/>
+			})
+		}
+	</body>
+</html>

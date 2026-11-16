@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+
+const {data} = Astro.props;
+---
+
+<article>
+    <img src={data.img} alt=`image of ${data.name}`>
+    <p>{data.job_position}</p>
+<h2>{data.name}</h2>
+<p>{data.phone_nr}</p>
+<p>{data.mail}</p>
+<p>{data.description}</p>
+</article>
