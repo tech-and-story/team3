@@ -1,0 +1,23 @@
+:root {
+  /* Colors */
+  --color-purple950: #6d003e;
+  --color-purple700: #aa0a66;
+
+  --color-orange500: #f5742e;
+  --color-orange400: #f78740;
+  --color-orange300: #fab277;
+
+  --color-yellow300: #fcdb35;
+
+  --color-blue500: #00a0ff;
+  --color-blue400: #2cb5ff;
+
+  --color-pink300: #ff8d9d;
+  --color-pink200: #ffccd3;
+  --color-pink100: #ffe3e5;
+  --color-pink50: #fff1f2;
+
+  --color-light: #f8f3ec;
+  --color-dark: #1b1b1b;
+  /* Padding & Margin */
+}

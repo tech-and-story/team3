@@ -1,0 +1,95 @@
+/**************************CSS Reset**************************/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  interpolate-size: allow-keywords;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  color: var(--color-dark);
+}
+
+h1,
+h2 {
+  line-height: 1.25;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+img,
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+label {
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  font-size: max(1em, 16px);
+}
+
+textarea {
+  resize: none;
+  min-height: 4lh;
+}
+
+legend {
+  padding: 0;
+}
+
+select,
+::picker(select) {
+  appearance: base-select;
+}
+/****************** Fonts *********************/
+.serif {
+  font-family: "oso-sans-variable", serif;
+}
+h1 {
+  font-family: "oso-sans-variable", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+}
+h2 {
+  font-family: "oso-sans-variable", sans-serif;
+  font-size: 36px;
+  font-weight: 500;
+}
+h3 {
+  font-family: "oso-sans-variable", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+h4 {
+  font-family: "oso-sans-variable", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+}
+p {
+  font-family: "oso-sans-variable", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+a {
+  font-family: "oso-sans-variable", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
