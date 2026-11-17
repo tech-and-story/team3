@@ -1,5 +1,11 @@
 ---
 import StaffCard from "../components/StaffCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import hero from "../assets/hero.png"
+import wave from "../assets/wave.png"
+import illu01 from "../assets/illustration01.png"
+
 const apiurl = "https://ytvapyezsyjphhrmwfsk.supabase.co/rest/v1/";
 const staffTableName = "staff";
 const studioTableName = "studios";
@@ -14,7 +20,8 @@ const options = {
 
 const staffResponse = await fetch(apiurl + staffTableName, options);
 const staffData = await staffResponse.json();
-console.log("staffData", staffData);
+
+// console.log("staffData", staffData);
 
 const studioResponse = await fetch(apiurl + studioTableName, options);
 const studioData = await studioResponse.json();
@@ -27,21 +34,85 @@ const udstyrData = await udstyrResponse.json();
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-		{
+<Layout>
+	<section>
+	<Image class="hero-img" src={hero} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
+	<article>
+		<div class="info">
+			<div class="symbol">O</div>
+			<div class="grid">
+			<p><strong>Kontakt</strong></p>
+			<a href="tel:+4546460442">46 46 04 42</a>
+			<a href="mailto:techandstorylab@ek.dk">techandstorylab@ek.dk</a>
+		</div>
+		</div>
+		<div class="info">
+			<div class="symbol">O</div>
+			<div class="grid">
+			<p><strong>Åbningstider</strong></p>
+				<div class="flex"><p>Man - Tors</p><p>09:00 - 16:00</p></div>
+				<div class="flex"><p>Fredag</p><p>09:00 - 15:00</p></div>
+			
+		</div>
+		</div>
+		<div class="info">
+			<div class="symbol">O</div>
+			<div class="grid">
+			<p><strong>Adresse</strong></p>
+			<p>Guldbergsgade 29N</p>
+			<p>Bygning A, lokale A025</p>
+		</div>
+		</div>
+	<Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
+	</article>
+	</section>
+	<section>
+		<article class="grid desktop_1-1">
+			<div class="txt-box">
+				<h2>fsdf</h2>
+				<p>sdfds</p>
+			</div>
+			<div>
+<Image src={illu01} alt="kmkæds" />
+	
+			</div>
+		</article>
+	</section>
+	{
 			staffData.map((data) => {
 				return <StaffCard data={data}/>
 			})
 		}
-	</body>
-</html>
+
+</Layout>
+
+<style>
+	.hero-img {
+		min-height: 400px;
+		object-fit: cover;
+	}
+	article {
+		position: relative;
+	}
+	.info {
+		display: flex;
+		padding: .5rem 1rem;
+		background-color: var(--color-pink300);
+	}
+	.grid {
+		display: grid;
+		max-width: 250px;
+	}
+	.flex {
+		display: flex;
+		justify-content: space-between;
+	}
+	.wave-img {
+		position: absolute;
+		bottom: -75;
+		z-index: -1;
+	}
+	section {
+		margin-bottom: 6rem;
+	}
+</style>
