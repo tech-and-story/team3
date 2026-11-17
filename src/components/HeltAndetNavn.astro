@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png'; 
+---
+
+
+<header>
+    <nav>
+        <a href="/"><Image src={logo} alt="Tech & Story lab's logo, pink og blommefarvet baggrund med lys tekst" /></a>
+       <ul>
+            <li><a href="/">Studioer</a></li>
+            <li><a href="/">Udstyr</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    header {
+        height: 60px;
+        background-color: var(--color-purple950);
+    }
+    nav {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        padding-inline: 2rem;
+        align-items: center;
+        img {
+            max-width: 40px;
+            height: fit-content;
+            border: 1px solid var(--color-pink300);
+            border-radius: 50%;
+        }
+    }
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 3rem;
+        a {
+        color: var(--color-light);
+        text-decoration: none;
+        }
+    }
+    /** dlskdlsjf */
+</style>
