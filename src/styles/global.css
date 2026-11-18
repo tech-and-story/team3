@@ -59,9 +59,17 @@ select,
 ::picker(select) {
   appearance: base-select;
 }
+/** Alle sider **/
+body {
+  background-color: var(--color-light);
+}
 /****************** Fonts *********************/
 .serif {
-  font-family: "oso-sans-variable", serif;
+  font-family: "oso-serif-variable", sans-serif;
+}
+.serif.italic {
+  font-style: italic;
+  font-weight: 400;
 }
 h1 {
   font-family: "oso-sans-variable", sans-serif;
@@ -81,7 +89,7 @@ h3 {
 h4 {
   font-family: "oso-sans-variable", sans-serif;
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 500;
 }
 p {
   font-family: "oso-sans-variable", sans-serif;
@@ -92,4 +100,6 @@ a {
   font-family: "oso-sans-variable", sans-serif;
   font-size: 16px;
   font-weight: 400;
+  text-decoration: none;
+  color: var(--color-dark);
 }

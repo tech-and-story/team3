@@ -7,8 +7,42 @@ const {data} = Astro.props;
 <article>
     <img src={data.img} alt=`image of ${data.name}`>
     <p>{data.job_position}</p>
-<h2>{data.name}</h2>
-<p>{data.phone_nr}</p>
-<p>{data.mail}</p>
-<p>{data.description}</p>
+    <h3 class="serif">{data.name}</h3>
+    <div class="flex">
+        <div class="center">
+            <span class="material-symbols-outlined">call</span>
+            <a href="tel:+45${data.phone_nr}">{data.phone_nr}</a>
+        </div>
+        <div class="center">
+            <span class="material-symbols-outlined">mail</span>
+            <a href="mailto:${data.mail}">{data.mail}</a>
+        </div>
+    </div>
+    <div>
+        <p><strong>Kompetencer</strong></p>
+        <p>{data.description}</p>
+    </div>
 </article>
+
+<style>
+    article {
+        display: grid;
+        gap: 4px;
+    }
+    img {
+        border-radius: 50%;
+        border: 2px solid var(--color-purple950);
+    }
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .center {
+        display: flex;
+        gap: .5rem;
+        span {
+            color: var(--color-orange500);
+        }
+    }
+</style>
