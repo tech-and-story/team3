@@ -1,0 +1,244 @@
+---
+interface Props {
+  mobile?: number;
+  tablet?: number;
+  desktop?: number;
+  gap?: string;
+}
+
+const { 
+  mobile = 1, 
+  tablet = 2, 
+  desktop = 3, 
+  gap = '16px' 
+} = Astro.props;
+---
+<!-- LAVET MED HJÆLP FRA AI PGA TIDSMANGEL -->
+
+
+
+<div 
+  class="slider-container" 
+  style={`
+    --cols-mobile: ${mobile};
+    --cols-tablet: ${tablet};
+    --cols-desktop: ${desktop};
+    --slide-gap: ${gap};
+  `}
+>
+  <div class="slider-track">
+    <slot />
+  </div>
+  <div class="dots-container"></div>
+</div>
+
+<style>
+  .slider-container {
+    /* Defaults to the mobile prop */
+    --slides-per-view: var(--cols-mobile);
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    overflow: hidden;
+  }
+
+  /* Switches to the tablet prop at 600px */
+  @media (min-width: 600px) {
+    .slider-container {
+      --slides-per-view: var(--cols-tablet);
+    }
+  }
+
+  /* Switches to the desktop prop at 900px */
+  @media (min-width: 900px) {
+    .slider-container {
+      --slides-per-view: var(--cols-desktop);
+    }
+  }
+
+  .slider-track {
+    display: flex;
+    gap: var(--slide-gap);
+    transition: transform 0.35s ease-in-out;
+    touch-action: pan-y;
+    user-select: none;
+    cursor: grab;
+  }
+
+  .slider-track.dragging {
+    transition: none;
+    cursor: grabbing;
+  }
+
+  .slider-track :global(> *) {
+    flex: 0 0 calc((100% - (var(--slides-per-view) - 1) * var(--slide-gap)) / var(--slides-per-view));
+  }
+
+  .dots-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .dots-container:empty {
+    display: none;
+  }
+  .dots-container :global(.dot) {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  }
+
+  .dots-container :global(.dot.active) {
+    background: var(--color-purple950);
+    width: 30px;
+    border-radius: 15px;
+  }
+</style>
+
+<script>
+  class ResponsiveSlider {
+    container: HTMLElement;
+    track: HTMLElement;
+    dotsContainer: HTMLElement;
+    slides: HTMLElement[];
+    totalSlides: number;
+    currentPage = 0;
+    isDragging = false;
+    startX = 0;
+    currentTranslate = 0;
+    prevTranslate = 0;
+    swipeThreshold = 50;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.track = container.querySelector('.slider-track')!;
+      this.dotsContainer = container.querySelector('.dots-container')!;
+      this.slides = Array.from(this.track.children) as HTMLElement[];
+      this.totalSlides = this.slides.length;
+
+      this.init();
+    }
+
+    getLayoutConfig() {
+      const styles = getComputedStyle(this.container);
+      const slidesPerView = parseInt(styles.getPropertyValue('--slides-per-view'), 10) || 1;
+      const gap = parseFloat(styles.getPropertyValue('--slide-gap')) || 0;
+      return { slidesPerView, gap };
+    }
+
+    getTotalPages() {
+      const { slidesPerView } = this.getLayoutConfig();
+      return Math.max(1, Math.ceil(this.totalSlides / slidesPerView));
+    }
+
+    update() {
+      const { slidesPerView, gap } = this.getLayoutConfig();
+      const totalPages = this.getTotalPages();
+
+      if (this.currentPage >= totalPages) {
+        this.currentPage = totalPages - 1;
+      }
+
+      const maxStartIndex = Math.max(0, this.totalSlides - slidesPerView);
+      const targetSlideIndex = Math.min(this.currentPage * slidesPerView, maxStartIndex);
+
+      const slideWidth = this.slides[0]?.offsetWidth || 0;
+      this.prevTranslate = -targetSlideIndex * (slideWidth + gap);
+      this.currentTranslate = this.prevTranslate;
+
+      this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+      this.renderDots(totalPages);
+    }
+
+    renderDots(totalPages: number) {
+      if (totalPages <= 1) {
+        this.dotsContainer.replaceChildren();
+        return;
+      }
+
+      if (this.dotsContainer.children.length !== totalPages) {
+        const dots = Array.from({ length: totalPages }, (_, i) => {
+          const dot = document.createElement('button');
+          dot.classList.add('dot');
+          dot.setAttribute('aria-label', `Go to page ${i + 1}`);
+          dot.addEventListener('click', () => {
+            this.currentPage = i;
+            this.update();
+          });
+          return dot;
+        });
+
+        this.dotsContainer.replaceChildren(...dots);
+      }
+
+      Array.from(this.dotsContainer.children).forEach((dot, i) => {
+        dot.classList.toggle('active', i === this.currentPage);
+      });
+    }
+
+    init() {
+      this.track.addEventListener('pointerdown', (e) => {
+        if (this.getTotalPages() <= 1) return;
+        this.isDragging = true;
+        this.startX = e.clientX;
+        this.track.classList.add('dragging');
+        this.track.setPointerCapture(e.pointerId);
+      });
+
+      this.track.addEventListener('pointermove', (e) => {
+        if (!this.isDragging) return;
+        const diff = e.clientX - this.startX;
+        const totalPages = this.getTotalPages();
+
+        const isAtStart = this.currentPage === 0 && diff > 0;
+        const isAtEnd = this.currentPage === totalPages - 1 && diff < 0;
+        const resistance = (isAtStart || isAtEnd) ? 0.3 : 1;
+
+        this.currentTranslate = this.prevTranslate + diff * resistance;
+        this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+      });
+
+      const handlePointerEnd = () => {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.track.classList.remove('dragging');
+
+        const movedBy = this.currentTranslate - this.prevTranslate;
+        const totalPages = this.getTotalPages();
+
+        if (movedBy < -this.swipeThreshold && this.currentPage < totalPages - 1) {
+          this.currentPage += 1;
+        } else if (movedBy > this.swipeThreshold && this.currentPage > 0) {
+          this.currentPage -= 1;
+        }
+
+        this.update();
+      };
+
+      this.track.addEventListener('pointerup', handlePointerEnd);
+      this.track.addEventListener('pointercancel', handlePointerEnd);
+      window.addEventListener('resize', () => this.update());
+
+      this.update();
+    }
+  }
+
+  function initSliders() {
+    document.querySelectorAll<HTMLElement>('.slider-container').forEach((el) => {
+      // Prevent double initialization if View Transitions are used
+      if (el.dataset.initialized) return;
+      el.dataset.initialized = 'true';
+      new ResponsiveSlider(el);
+    });
+  }
+
+  // Runs on standard page loads AND Astro View Transitions (<ClientRouter />)
+  initSliders();
+  document.addEventListener('astro:page-load', initSliders);
+</script>
