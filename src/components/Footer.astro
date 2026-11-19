@@ -1,0 +1,157 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png";
+import wavefooter from "../assets/wavefooter.png";
+---
+
+<footer>
+  <Image class="wave-img" src={wavefooter} alt="Blommefarvet bølge som accentelement" />
+  <section>
+    <article class="wave-info padding-inline">
+      <a href="/">
+        <Image src={logo} alt="Tech & Story lab's logo, pink og blommefarvet baggrund med lys tekst" />
+      </a>
+      <div class="info">
+        <div class="symbol grid">
+          <span class="material-symbols-outlined">call</span>
+          <span class="material-symbols-outlined">mail</span>
+        </div>
+        <div class="grid">
+          <p class="line">
+            <strong>Kontakt</strong>
+          </p>
+          <a href="tel:+4546460442">46 46 04 42</a>
+          <a href="mailto:techandstorylab@ek.dk">techandstorylab@ek.dk</a>
+        </div>
+      </div>
+      <div class="info">
+        <div class="symbol">
+          <span class="material-symbols-outlined">schedule</span>
+        </div>
+        <div class="grid">
+          <p class="line">
+            <strong>Åbningstider</strong>
+          </p>
+          <div class="flex">
+            <p>Man - Tors</p>
+            <p>09:00 - 16:00</p>
+          </div>
+          <div class="flex">
+            <p>Fredag</p>
+            <p>09:00 - 15:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="symbol">
+          <span class="material-symbols-outlined">location_on</span>
+        </div>
+        <div class="grid">
+          <p class="line">
+            <strong>Adresse</strong>
+          </p>
+          <p>Guldbergsgade 29N</p>
+          <p>Bygning A, lokale A025</p>
+        </div>
+      </div>
+    </article>
+  </section>
+</footer>
+
+<style>
+  article {
+    position: relative;
+  }
+  a img {
+    max-width: 100px;
+    height: fit-content;
+    border: 1px solid var(--color-pink300);
+    border-radius: 50%;
+    right: 10%;
+    position: absolute;
+  }
+
+  .wave-info {
+    display: grid;
+    justify-content: space-between;
+    justify-self: center;
+    gap: 1rem;
+    padding-block: 2rem;
+    max-width: 650px;
+    width: 100%;
+  }
+
+  section {
+    background-color: var(--color-purple950);
+  }
+
+  .info {
+    display: flex;
+    color: var(--color-pink300);
+    a {
+      color: var(--color-pink300);
+    }
+    .grid {
+      row-gap: 4px;
+    }
+    max-width: 1250px;
+    height: min-content;
+    align-self: center;
+    .line {
+      color: var(--color-light);
+    }
+  }
+  .grid {
+    display: grid;
+  }
+  .symbol {
+    padding-top: 1.75rem;
+    padding-right: 1rem;
+    color: var(--color-pink100);
+  }
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    min-width: 250px;
+  }
+  .flextitle {
+    display: flex;
+  }
+  .padding-inline {
+    padding-inline: 1.5rem;
+  }
+  .padding-bottom8 {
+    padding-bottom: 0.5rem;
+  }
+  .padding-bottom16 {
+    padding-bottom: 1rem;
+  }
+  .padding-bottom24 {
+    padding-bottom: 1.5rem;
+  }
+  .txt-box {
+    max-width: 600px;
+  }
+  .illustration {
+    max-height: 320px;
+    width: auto;
+    place-self: center;
+  }
+
+  @media (min-width: 600px) {
+    .wave-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      justify-self: center;
+      gap: 1rem;
+      padding-block: 2rem;
+      max-width: 1250px;
+      width: 100%;
+    }
+    a img {
+      position: relative;
+      max-width: 200px;
+    }
+  }
+</style>
