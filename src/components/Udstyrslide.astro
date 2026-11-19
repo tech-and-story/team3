@@ -1,14 +1,17 @@
 ---
 // const {headline, headlinebold, description, image, alt} = Astro.props;
 // import { Image } from 'astro:assets';
-const {data} = Astro.props;
+const { data } = Astro.props;
 ---
 
 <article>
   <img src={data.image} alt=`Image of ${data.headline} ${data.headlinebold} udstyr` />
-    <div class="flex">
-  <h4 class="serif italic">{data.headline}&shy;{data.headlinebreak}</h4><h4>{data.headlinebold}</h4>
-</div>
+  <div class="flex">
+    <h4 class="serif italic">
+      {data.headline}&shy;{data.headlinebreak}
+    </h4>
+    <h4>{data.headlinebold}</h4>
+  </div>
   <p>{data.description}</p>
 </article>
 
@@ -17,8 +20,9 @@ const {data} = Astro.props;
     display: grid;
     grid-template-rows: auto auto 1fr;
     img {
-        border: 2px solid var(--color-purple950);
-        border-radius: 10px;
+      border: 2px solid var(--color-purple950);
+      border-radius: 10px;
+      background-color: var(--color-light);
     }
   }
   .flex {
