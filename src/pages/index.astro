@@ -1,23 +1,16 @@
 ---
 import StaffCard from "../components/StaffCard.astro";
-import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import hero from "../assets/hero.png";
-import wave from "../assets/wave.png";
-import extra from "../assets/extra_logo_for_accent.svg";
-import illu01 from "../assets/illustration01.png";
-import Header from "../components/Header.astro";
-import sekstant from "../assets/blue_sekstant_elm.svg";
-import Footer from "../components/Footer.astro";
-import "../styles/global.css";
-import "../styles/custom.css";
-import Slider from "../components/Slider.astro";
-import podcastStudio from "../assets/podcast.png";
-import photoStudio from "../assets/photostudio.png";
-import eyeStudio from "../assets/eyetracking.png";
-import Studioslide from "../components/Studioslide.astro";
-import Udstyrslide from "../components/Udstyrslide.astro";
-import Image from "astro/components/Image.astro";
+import hero from "../assets/hero.png"
+import wave from "../assets/wave.png"
+import illu01 from "../assets/illustration01.png"
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import "../styles/global.css"
+import "../styles/custom.css"
+import Slider from '../components/Slider.astro';
+import Studioslide from "../components/Studioslide.astro"
+import Udstyrslide from "../components/Udstyrslide.astro"
 
 const apiurl = "https://ytvapyezsyjphhrmwfsk.supabase.co/rest/v1/";
 const staffTableName = "staff";
@@ -54,20 +47,110 @@ console.log("udstyrCatData", udstyrData);
 ---
 
 <html lang="da">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="https://use.typekit.net/uiu2qkb.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=call,location_on,mail,schedule" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Tech & Story Lab</title>
-  </head>
-  <body>
-    <main>
-      <Header />
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href="https://use.typekit.net/uiu2qkb.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=call,location_on,mail,schedule" />
+        <meta name="robots" content="noindex, nofollow">
+		<title>Tech & Story Lab</title>
+	</head>
+	<body>
+		<main>
+        <Header/>
+
+
+	<section>
+	<Image class="hero-img" src={hero} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
+	<article class="wave-info padding-inline">
+		<div class="info">
+			<div class="symbol grid"><span class="material-symbols-outlined">call</span><span class="material-symbols-outlined">mail</span></div>
+			<div class="grid">
+			<p><strong>Kontakt</strong></p>
+			<a href="tel:+4546460442">46 46 04 42</a>
+			<a href="mailto:techandstorylab@ek.dk">techandstorylab@ek.dk</a>
+		</div>
+		</div>
+		<div class="info">
+			<div class="symbol"><span class="material-symbols-outlined">schedule</span>
+			</div>
+			<div class="grid">
+			<p><strong>Åbningstider</strong></p>
+				<div class="flex"><p>Man - Tors</p><p>09:00 - 16:00</p></div>
+				<div class="flex"><p>Fredag</p><p>09:00 - 15:00</p></div>
+			
+		</div>
+		</div>
+		<div class="info">
+			<div class="symbol"> <span class="material-symbols-outlined">location_on</span></div>
+			<div class="grid">
+			<p><strong>Adresse</strong></p>
+			<p>Guldbergsgade 29N</p>
+			<p>Bygning A, lokale A025</p>
+		</div>
+		</div>
+	</article>
+	<Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
+	</section>
+	<section class="padding-inline">
+		<article class="grid desktop_1-1">
+			<div class="txt-box">
+				<h2 class="serif padding-bottom16">Tech & Story Lab er et lab med fokus på ny teknologi for EK's studerende, undervisere og øvrige ansatte.</h2>
+				<p>I Tech & Story Lab kan du eksperimentere med ny teknologi og på egen hånd lære at arbejde med forskelligt udstyr. Vi har alt lige fra kameraer, mikrofoner og lysudstyr til VR-gear, AI-teknologier, RaspberryPi's og meget mere.
+				<br><br>
+				Du kan låne et stort udvalg af udstyr og få kyndig vejledning i brugen af det.
+				<br><br>
+				For at låne udstyr og benytte vores faciliteter skal du huske at medbringe dit studiekort. Studiekortet skal være gyldigt og må kun benyttes af kortets ejer.</p>
+			</div>
+			<div>
+			<Image class="illustration" src={illu01} alt="illustration af en person der sidder i skrædderstilling, med en mikrofon og et kamera i hver hånd" />
+			</div>
+		</article>
+	</section>
+	<section class="padding-inline">
+		<article class="padding-bottom24">
+		<div class="flextitle padding-bottom8">
+		<h2 class="serif italic">Book et&nbsp;</h2><h2>studie</h2></div>
+		<p>Du kan booke studie mandag til fredag mellem kl. 09 - 15. Det er kun muligt at booke det én dag ad gangen.</p>
+	</article>
+<Slider mobile={1} tablet={2} desktop={3}>
+		{
+			studioData.map((data) => {
+				return <div class="card">
+					<Studioslide data={data}/>
+				</div>
+			})
+		}
+</Slider>
+	</section>
+	<section class="padding-inline">
+		<article class="padding-bottom24">
+		<div class="flextitle padding-bottom8">
+		<h2 class="serif italic">Lån&nbsp;</h2><h2>udstyr</h2></div>
+		<p>Her kan du få et overblik over vores forskellige typer udstyr. For at booke og få udleveret udstyr skal du besøge os i Tech & Story Lab.</p>
+	</article>
+<Slider mobile={2} tablet={3} desktop={5}>
+  {
+  udstyrCatData.map((data) => ( 
+    <div class="card">
+      <Udstyrslide data={data} />
+    </div>
+  ))
+  }
+</Slider>
+</section>
+<section class="video">
+	<video src="/video.mp4" width="100%" playsinline muted loop autoplay></video>
+</section>
+<section class="staff-grid padding-inline">
+	{
+			staffData.map((data) => {
+				return <StaffCard data={data}/>
+			})
+		}
 
       <section class="section-info">
         <Image class="hero-img" src={hero} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
