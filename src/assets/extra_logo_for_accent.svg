@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 249.19 249.24">
+  <g>
+    <path d="M141.07,3.58l-70.09,120.95L27.59,50.12S63.2-5.89,141.07,3.58Z" style="fill: #fa6176;"/>
+    <g>
+      <line x1="70.98" y1="124.53" x2="70.94" y2="124.61" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <path d="M70.98,124.53L27.59,50.12S63.2-5.89,141.07,3.58l-70.09,120.95Z" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <line x1="97.74" y1="170.41" x2="70.98" y2="124.53" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+    </g>
+  </g>
+  <g>
+    <path d="M177.87,124.61l46.55,70.23s-41.39,63.34-121.28,50.07l74.73-120.3Z" style="fill: #fa6176;"/>
+    <g>
+      <path d="M147.21,78.35l30.66,46.26,46.55,70.23s-41.39,63.34-121.28,50.07" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <path d="M11.36,170.87s20.82,60.1,91.78,74.04l74.73-120.3" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+    </g>
+  </g>
+  <g>
+    <path d="M27.59,50.12l70.15,120.28-86.38.46s-28.29-62.27,16.23-120.75Z" style="fill: #6d003e;"/>
+    <g>
+      <path d="M148.88,170.87H11.36s-28.29-62.27,16.23-120.75" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <line x1="97.74" y1="170.41" x2="27.59" y2="50.12" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <line x1="11.36" y1="170.87" x2="97.74" y2="170.41" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+    </g>
+  </g>
+  <g>
+    <path d="M237.55,78.35H97.74L141.07,3.58s64.97,4.57,96.47,74.77Z" style="fill: #6d003e;"/>
+    <g>
+      <path d="M141.07,3.58s64.97,4.57,96.47,74.77H97.74" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <line x1="97.74" y1="78.35" x2="141.07" y2="3.58" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+    </g>
+  </g>
+  <g>
+    <path d="M237.55,78.35s27.61,54.48-13.13,116.49l-77.21-116.49h90.34Z" style="fill: #6d003e;"/>
+    <g>
+      <path d="M237.55,78.35s27.61,54.48-13.13,116.49" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <line x1="237.55" y1="78.35" x2="147.21" y2="78.35" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+      <line x1="224.42" y1="194.84" x2="147.21" y2="78.35" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+    </g>
+  </g>
+  <g>
+    <path d="M148.88,170.87l-45.74,74.04s-65.91-10.33-91.78-74.04h137.52Z" style="fill: #6d003e;"/>
+    <path d="M148.88,170.87l-45.74,74.04s-65.91-10.33-91.78-74.04h137.52Z" style="fill: none; stroke: #ff8d9d; stroke-miterlimit: 10; stroke-width: 5px;"/>
+  </g>
+</svg>

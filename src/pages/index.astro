@@ -152,7 +152,7 @@ console.log("udstyrCatData", udstyrData);
 			})
 		}
 
-      <section>
+      <section class="section-info">
         <Image class="hero-img" src={hero} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
         <article class="wave-info padding-inline">
           <div class="info">
@@ -199,6 +199,7 @@ console.log("udstyrCatData", udstyrData);
             </div>
           </div>
         </article>
+        <Image class="accent-img" src={extra} alt="Lille kameralinse inspireret ikon i blomme og pink" />
         <Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
       </section>
       <section class="padding-inline">
@@ -241,20 +242,23 @@ console.log("udstyrCatData", udstyrData);
         </Slider>
       </section>
       <section class="padding-inline">
-        <article class="padding-bottom24">
-          <div class="flextitle padding-bottom8">
-            <h2 class="serif italic">Lån&nbsp;</h2>
-            <h2>udstyr</h2>
-          </div>
-          <p>Her kan du få et overblik over vores forskellige typer udstyr. For at booke og få udleveret udstyr skal du besøge os i Tech & Story Lab.</p>
-        </article>
-        <Slider mobile={2} tablet={3} desktop={5}>
-          {udstyrCatData.map((data) => (
-            <div class="card">
-              <Udstyrslide data={data} />
+        <Image class="sekstant" src={sekstant} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
+        <div class="sekstant-top">
+          <article class="padding-bottom24">
+            <div class="flextitle padding-bottom8">
+              <h2 class="serif italic">Lån&nbsp;</h2>
+              <h2>udstyr</h2>
             </div>
-          ))}
-        </Slider>
+            <p>Her kan du få et overblik over vores forskellige typer udstyr. For at booke og få udleveret udstyr skal du besøge os i Tech & Story Lab.</p>
+          </article>
+          <Slider mobile={2} tablet={3} desktop={5}>
+            {udstyrCatData.map((data) => (
+              <div class="card">
+                <Udstyrslide data={data} />
+              </div>
+            ))}
+          </Slider>
+        </div>
       </section>
       <section class="video">
         <video src="/public/video.mp4" width="100%" playsinline muted loop autoplay></video>
@@ -282,7 +286,6 @@ console.log("udstyrCatData", udstyrData);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: var(--color-pink300);
     gap: 1rem;
     padding-block: 2rem;
   }
@@ -315,8 +318,20 @@ console.log("udstyrCatData", udstyrData);
   .wave-img {
     position: absolute;
   }
+  .accent-img {
+    position: absolute;
+    max-width: 80px;
+    z-index: 3;
+    height: fit-content;
+    right: 10%;
+    top: 110%;
+    opacity: 80%;
+  }
   section {
     margin-bottom: 6rem;
+  }
+  .section-info {
+    background-color: var(--color-pink300);
   }
   .padding-inline {
     padding-inline: 1.5rem;
@@ -343,9 +358,49 @@ console.log("udstyrCatData", udstyrData);
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 3rem;
   }
+  .sekstant {
+    visibility: hidden;
+  }
+
   @media (min-width: 600px) {
     .desktop_1-1 {
       grid-template-columns: 1fr 1fr;
+    }
+    .staff-grid {
+      max-width: 1300px;
+      justify-self: center;
+      width: 100%;
+      padding-inline: 3rem;
+    }
+    .accent-img {
+      max-width: 120px;
+      right: 5%;
+      top: 106%;
+    }
+    .wave-info {
+      max-width: 1250px;
+      justify-self: center;
+      justify-content: space-between;
+      gap: 10rem;
+    }
+    article {
+      max-width: 1300px;
+      justify-self: center;
+      width: 100%;
+      padding-inline: 3rem;
+    }
+    .sekstant {
+      visibility: visible;
+      z-index: -2;
+      position: absolute;
+      opacity: 30%;
+      width: 100%;
+      height: auto;
+      left: -3px;
+      max-width: none;
+    }
+    .sekstant-top {
+      z-index: 0;
     }
   }
 </style>
