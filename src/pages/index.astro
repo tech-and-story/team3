@@ -3,6 +3,8 @@ import StaffCard from "../components/StaffCard.astro";
 import { Image } from "astro:assets";
 import hero from "../assets/hero.png"
 import wave from "../assets/wave.png"
+import extra from "../assets/extra_logo_for_accent.svg"
+import sekstant from "../assets/blue_sekstant_elm.svg"
 import illu01 from "../assets/illustration01.png"
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
@@ -62,96 +64,6 @@ console.log("udstyrCatData", udstyrData);
 		<main>
         <Header/>
 
-
-	<section>
-	<Image class="hero-img" src={hero} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
-	<article class="wave-info padding-inline">
-		<div class="info">
-			<div class="symbol grid"><span class="material-symbols-outlined">call</span><span class="material-symbols-outlined">mail</span></div>
-			<div class="grid">
-			<p><strong>Kontakt</strong></p>
-			<a href="tel:+4546460442">46 46 04 42</a>
-			<a href="mailto:techandstorylab@ek.dk">techandstorylab@ek.dk</a>
-		</div>
-		</div>
-		<div class="info">
-			<div class="symbol"><span class="material-symbols-outlined">schedule</span>
-			</div>
-			<div class="grid">
-			<p><strong>Åbningstider</strong></p>
-				<div class="flex"><p>Man - Tors</p><p>09:00 - 16:00</p></div>
-				<div class="flex"><p>Fredag</p><p>09:00 - 15:00</p></div>
-			
-		</div>
-		</div>
-		<div class="info">
-			<div class="symbol"> <span class="material-symbols-outlined">location_on</span></div>
-			<div class="grid">
-			<p><strong>Adresse</strong></p>
-			<p>Guldbergsgade 29N</p>
-			<p>Bygning A, lokale A025</p>
-		</div>
-		</div>
-	</article>
-	<Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
-	</section>
-	<section class="padding-inline">
-		<article class="grid desktop_1-1">
-			<div class="txt-box">
-				<h2 class="serif padding-bottom16">Tech & Story Lab er et lab med fokus på ny teknologi for EK's studerende, undervisere og øvrige ansatte.</h2>
-				<p>I Tech & Story Lab kan du eksperimentere med ny teknologi og på egen hånd lære at arbejde med forskelligt udstyr. Vi har alt lige fra kameraer, mikrofoner og lysudstyr til VR-gear, AI-teknologier, RaspberryPi's og meget mere.
-				<br><br>
-				Du kan låne et stort udvalg af udstyr og få kyndig vejledning i brugen af det.
-				<br><br>
-				For at låne udstyr og benytte vores faciliteter skal du huske at medbringe dit studiekort. Studiekortet skal være gyldigt og må kun benyttes af kortets ejer.</p>
-			</div>
-			<div>
-			<Image class="illustration" src={illu01} alt="illustration af en person der sidder i skrædderstilling, med en mikrofon og et kamera i hver hånd" />
-			</div>
-		</article>
-	</section>
-	<section class="padding-inline">
-		<article class="padding-bottom24">
-		<div class="flextitle padding-bottom8">
-		<h2 class="serif italic">Book et&nbsp;</h2><h2>studie</h2></div>
-		<p>Du kan booke studie mandag til fredag mellem kl. 09 - 15. Det er kun muligt at booke det én dag ad gangen.</p>
-	</article>
-<Slider mobile={1} tablet={2} desktop={3}>
-		{
-			studioData.map((data) => {
-				return <div class="card">
-					<Studioslide data={data}/>
-				</div>
-			})
-		}
-</Slider>
-	</section>
-	<section class="padding-inline">
-		<article class="padding-bottom24">
-		<div class="flextitle padding-bottom8">
-		<h2 class="serif italic">Lån&nbsp;</h2><h2>udstyr</h2></div>
-		<p>Her kan du få et overblik over vores forskellige typer udstyr. For at booke og få udleveret udstyr skal du besøge os i Tech & Story Lab.</p>
-	</article>
-<Slider mobile={2} tablet={3} desktop={5}>
-  {
-  udstyrCatData.map((data) => ( 
-    <div class="card">
-      <Udstyrslide data={data} />
-    </div>
-  ))
-  }
-</Slider>
-</section>
-<section class="video">
-	<video src="/video.mp4" width="100%" playsinline muted loop autoplay></video>
-</section>
-<section class="staff-grid padding-inline">
-	{
-			staffData.map((data) => {
-				return <StaffCard data={data}/>
-			})
-		}
-
       <section class="section-info">
         <Image class="hero-img" src={hero} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
         <article class="wave-info padding-inline">
@@ -198,9 +110,9 @@ console.log("udstyrCatData", udstyrData);
               <p>Bygning A, lokale A025</p>
             </div>
           </div>
-        </article>
         <Image class="accent-img" src={extra} alt="Lille kameralinse inspireret ikon i blomme og pink" />
-        <Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
+       
+        </article> <Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
       </section>
       <section class="padding-inline">
         <article class="grid desktop_1-1">
@@ -229,17 +141,15 @@ console.log("udstyrCatData", udstyrData);
           </div>
           <p>Du kan booke studie mandag til fredag mellem kl. 09 - 15. Det er kun muligt at booke det én dag ad gangen.</p>
         </article>
-        <Slider mobile={1} tablet={2} desktop={3}>
-          <div class="card">
-            <Studioslide headline="Podcast" description="I podcaststudiet kan du prøve kræfter med at lave din egen podcast" image={podcastStudio} alt="Foto af tech og storylabs podcast studie" />
-          </div>
-          <div class="card">
-            <Studioslide headline="Foto & video" description="Få hjælp til at tage professionelle billeder og video" image={photoStudio} alt="Foto af tech og storylabs foto og lyd studie" />
-          </div>
-          <div class="card">
-            <Studioslide headline="Eyetracking" description="Få indsigt i visuel adfærd på digitale platforme med eye tracking." image={eyeStudio} alt="Foto af tech og storylabs eyetracking studie" />
-          </div>
-        </Slider>
+<Slider mobile={1} tablet={2} desktop={3}>
+		{
+			studioData.map((data) => {
+				return <div class="card">
+					<Studioslide data={data}/>
+				</div>
+			})
+		}
+</Slider>
       </section>
       <section class="padding-inline">
         <Image class="sekstant" src={sekstant} alt="et billede fra Tech & Story Lab, hvor der står Tech & Story Lab i neon lysrør" />
@@ -261,7 +171,7 @@ console.log("udstyrCatData", udstyrData);
         </div>
       </section>
       <section class="video">
-        <video src="/public/video.mp4" width="100%" playsinline muted loop autoplay></video>
+        <video src="/video.mp4" width="100%" playsinline muted loop autoplay></video>
       </section>
       <section class="staff-grid padding-inline">
         {staffData.map((data) => {
@@ -324,7 +234,7 @@ console.log("udstyrCatData", udstyrData);
     z-index: 3;
     height: fit-content;
     right: 10%;
-    top: 110%;
+    bottom: 0;
     opacity: 80%;
   }
   section {
@@ -349,8 +259,8 @@ console.log("udstyrCatData", udstyrData);
     max-width: 600px;
   }
   .illustration {
-    max-height: 320px;
-    width: auto;
+    max-width: 370px;
+    height: auto;
     place-self: center;
   }
   .staff-grid {
@@ -363,31 +273,22 @@ console.log("udstyrCatData", udstyrData);
   }
 
   @media (min-width: 600px) {
-    .desktop_1-1 {
-      grid-template-columns: 1fr 1fr;
-    }
     .staff-grid {
       max-width: 1300px;
       justify-self: center;
       width: 100%;
       padding-inline: 3rem;
     }
-    .accent-img {
-      max-width: 120px;
-      right: 5%;
-      top: 106%;
-    }
     .wave-info {
       max-width: 1250px;
       justify-self: center;
       justify-content: space-between;
-      gap: 10rem;
+      /* gap: 10rem; */
     }
     article {
       max-width: 1300px;
       justify-self: center;
       width: 100%;
-      padding-inline: 3rem;
     }
     .sekstant {
       visibility: visible;
@@ -402,5 +303,17 @@ console.log("udstyrCatData", udstyrData);
     .sekstant-top {
       z-index: 0;
     }
+  }
+  @media (min-width: 800px) {
+    .desktop_1-1 {
+      grid-template-columns: 1fr 1fr;
+    }
+    .accent-img {
+      /* max-width: 100px; */
+      bottom: -65%;
+      right: 5%;
+    }}
+  .padding-inline {
+    padding-inline: 3rem;
   }
 </style>
