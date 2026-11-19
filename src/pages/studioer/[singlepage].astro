@@ -35,24 +35,24 @@ const { studio } = Astro.props;
     <article class="hero">
         <img src={studio.banner_img}/>
         <div class="title">
-            <h1 class="serif italic">{studio.name}</h1>
+            <h1 class="italic">{studio.name}</h1>
             <h1 class="align-end">studio</h1>
         </div>
     </article>
 	<Image class="wave-img" src={wave} alt="Pink bølge som baggrunds element" />
 </section>
 <section class="desktop_1-1">
-    <article>
+    <article class="txt-box">
         <div class="flex">
-            <h2 class="serif italic">Book&nbsp;</h2>
-            <h2 class="serif italic">{studio.name}&nbsp;</h2>
+            <h2 class="italic">Book&nbsp;</h2>
+            <h2 class="italic">{studio.name}&nbsp;</h2>
             <h2><strong>studioet</strong></h2>
         </div>
         <p>Du kan booke studiet mandag-fredag mellem kl. 9-15. Det er kun muligt at booke det 1 dag ad gangen. Når du har booket studiet, kan du afhente nøglen i Tech & Story Lab samme dag.  Du finder os på Guldbergsgade 29N lige bag receptionen i stueetagen. Vi står klar til at hjælpe dig og kan også vejlede dig i, om du skal have yderligere udstyr til dit projekt.</p>
     </article>
     <article class="info-box">
         <div class="flex">
-            <h4 class="serif italic">{studio.name}&nbsp;</h4><h4><strong>studio</strong></h4>
+            <h4 class="italic">{studio.name}&nbsp;</h4><h4><strong>studio</strong></h4>
         </div>
         <p><strong>Lab</strong></p>
         <p>Tech & Story</p>
@@ -61,10 +61,18 @@ const { studio } = Astro.props;
         <p>alle</p>
         <span class="line"></span>
         <a href="" class="cta-btn">
-            <p class="serif italic">book studiet&nbsp;</p>
+            <p class="italic">book studiet&nbsp;</p>
             <p><strong>online</strong></p>
         </a>
 </article>
+</section>
+<section>
+    <article>
+        <div class="flex">
+        <h2 class="italic">I tvivl om hvor du skal starte?&nbsp;</h2>
+        <h2><strong>Se hvad andre har lånt</strong></h2>
+    </div>
+    </article>
 </section>
 <Footer/>
 
@@ -72,6 +80,7 @@ const { studio } = Astro.props;
     .hero {
         display: grid;
         background-color: var(--color-pink300);
+        padding-bottom: 3rem;
         img {
             grid-column: 1/2;
             grid-row: 1/2;
@@ -103,6 +112,11 @@ const { studio } = Astro.props;
         background-color: var(--color-purple950);
         color: var(--color-pink300);
         padding: 2rem;
+        margin: 1.5rem;
+        border-radius: 20px;
+        max-width: 314px;
+        justify-self: center;
+        width: 100%;
         h4 {
             padding-bottom: 1rem;
         }
@@ -122,10 +136,23 @@ const { studio } = Astro.props;
         align-items: center;
         border-radius: 50px;
         justify-self: center;
+        transition: .3s ease-out;
     }
     a.cta-btn:hover {
         background-color: var(--color-dark);
         color: var(--color-light);
         padding-inline: 2rem;
+    }
+    .txt-box {
+        display: grid;
+        gap: 1rem;
+        padding-inline: 1.5rem;
+        padding-block: 2rem;
+    }
+    @media (min-width: 800px) {
+        .desktop_1-1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
     }
 </style>
