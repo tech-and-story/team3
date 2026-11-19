@@ -65,7 +65,7 @@ body {
 }
 /****************** Fonts *********************/
 .serif {
-  font-family: "oso-serif-variable", sans-serif;
+  font-family: "oso-serif-variable";
 }
 .serif.italic {
   font-style: italic;

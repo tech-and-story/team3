@@ -1,15 +1,18 @@
 ---
-const {headline, description, image, alt} = Astro.props;
+const {headline, description, image} = Astro.props;
 import { Image } from 'astro:assets';
+const { data } = Astro.props;
 ---
 
-<article>
-  <Image src={image} alt={alt}/>
+<a href=`/studioer/${data.slug}`>
+  <article>
+    <img src={data.image} alt=`image of ${data.name}`>
   <div class="banner">
     <div class="flex">
-  <h3 class="serif italic">{headline}&nbsp;</h3><h3>studie</h3></div>
-  <p>{description}</p></div>
+  <h3 class="serif italic">{data.name}&nbsp;</h3><h3>studio</h3></div>
+  <p>{data.description}</p></div>
 </article>
+</a>
 
 <style>
   article {

@@ -1,0 +1,29 @@
+<!-- ---
+export async function getStaticPaths() {
+const apiurl = "https://ytvapyezsyjphhrmwfsk.supabase.co/rest/v1/";
+const TableName = "studios";
+
+const key = "sb_publishable_nUGu7E0X6O-02X9AXpXoJA_qtbHWKwE";
+const options = {
+	headers: {
+		apikey: key
+	},
+};
+
+const response = await fetch(apiurl + TableName, options);
+const studios = await response.json();
+
+
+    return studios.map((studio) => {
+        return {
+            params: { singlepage: studio.slug },
+            props: { studio },
+        };
+    });
+}
+
+const { studio } = Astro.props;
+---
+
+<h1>{studio.name}</h1>
+<img src={studio.image}/> -->

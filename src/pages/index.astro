@@ -1,6 +1,5 @@
 ---
 import StaffCard from "../components/StaffCard.astro";
-import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import hero from "../assets/hero.png"
 import wave from "../assets/wave.png"
@@ -10,9 +9,6 @@ import Footer from "../components/Footer.astro"
 import "../styles/global.css"
 import "../styles/custom.css"
 import Slider from '../components/Slider.astro';
-import podcastStudio from "../assets/podcast.png"
-import photoStudio from "../assets/photostudio.png"
-import eyeStudio from "../assets/eyetracking.png"
 import Studioslide from "../components/Studioslide.astro"
 import Udstyrslide from "../components/Udstyrslide.astro"
 
@@ -103,7 +99,7 @@ console.log("udstyrCatData", udstyrData);
 	<section class="padding-inline">
 		<article class="grid desktop_1-1">
 			<div class="txt-box">
-				<h2 class="padding-bottom16">Tech & Story Lab er et lab med fokus på ny teknologi for EK's studerende, undervisere og øvrige ansatte.</h2>
+				<h2 class="serif padding-bottom16">Tech & Story Lab er et lab med fokus på ny teknologi for EK's studerende, undervisere og øvrige ansatte.</h2>
 				<p>I Tech & Story Lab kan du eksperimentere med ny teknologi og på egen hånd lære at arbejde med forskelligt udstyr. Vi har alt lige fra kameraer, mikrofoner og lysudstyr til VR-gear, AI-teknologier, RaspberryPi's og meget mere.
 				<br><br>
 				Du kan låne et stort udvalg af udstyr og få kyndig vejledning i brugen af det.
@@ -122,9 +118,13 @@ console.log("udstyrCatData", udstyrData);
 		<p>Du kan booke studie mandag til fredag mellem kl. 09 - 15. Det er kun muligt at booke det én dag ad gangen.</p>
 	</article>
 <Slider mobile={1} tablet={2} desktop={3}>
-<div class="card"><Studioslide headline="Podcast" description="I podcaststudiet kan du prøve kræfter med at lave din egen podcast" image={podcastStudio} alt="Foto af tech og storylabs podcast studie" /></div>
-<div class="card"><Studioslide headline="Foto & video" description="Få hjælp til at tage professionelle billeder og video" image={photoStudio} alt="Foto af tech og storylabs foto og lyd studie" /></div>
-<div class="card"><Studioslide headline="Eyetracking" description="Få indsigt i visuel adfærd på digitale platforme med eye tracking." image={eyeStudio} alt="Foto af tech og storylabs eyetracking studie" /></div>
+		{
+			studioData.map((data) => {
+				return <div class="card">
+					<Studioslide data={data}/>
+				</div>
+			})
+		}
 </Slider>
 	</section>
 	<section class="padding-inline">
@@ -135,7 +135,7 @@ console.log("udstyrCatData", udstyrData);
 	</article>
 <Slider mobile={2} tablet={3} desktop={5}>
   {
-  udstyrCatData.map((data) => (
+  udstyrCatData.map((data) => ( 
     <div class="card">
       <Udstyrslide data={data} />
     </div>
@@ -144,7 +144,7 @@ console.log("udstyrCatData", udstyrData);
 </Slider>
 </section>
 <section class="video">
-	<video src="/public/video.mp4" width="100%" playsinline muted loop autoplay></video>
+	<video src="/video.mp4" width="100%" playsinline muted loop autoplay></video>
 </section>
 <section class="staff-grid padding-inline">
 	{
